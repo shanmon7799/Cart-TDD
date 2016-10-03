@@ -49,6 +49,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_to_cart
+    @cart.add_item(params[:id])
+    session["my_cart_session_123"] = @cart.serialize
+    redirect_to products_path, notice: "Thanks"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

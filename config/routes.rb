@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 		end
   end
 
-  resources :cart, only: [:show, :destroy]
+  resource :cart, only: [:show, :destroy] do
+  	collection do
+  		get :checkout
+  	end
+  end
 
   root "products#index"
 end

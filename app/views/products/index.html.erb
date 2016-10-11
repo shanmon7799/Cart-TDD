@@ -2,6 +2,8 @@
 
 <h1>商品列表</h1>
 
+<%= link_to "New Product", new_product_path, class: "btn btn-success btn-lg" %>
+
 <table class = "table">
   <thead>
     <tr>
@@ -27,6 +29,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+<%= paginate @products, theme: "twitter-bootstrap-3" %>

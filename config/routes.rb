@@ -12,7 +12,20 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :orders, only: [:create]
+  resources :orders, only: [:create] do
+    member do
+      get :pay
+    end
+    collection do
+      post :finish
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      post :pay2go_callback, to: "pay2go#callback"
+    end
+  end
 
   root "products#index"
 end
